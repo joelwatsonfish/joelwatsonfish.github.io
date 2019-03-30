@@ -5,12 +5,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 		<title>
-				Installation Notes (Hugo &#43; GitHub-Pages) &middot; Fish Out Of Water
+				Installation Notes &middot; Fish Out Of Water
 		</title>
 	
 		
   		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+		<link rel="stylesheet" href="/custom.css">
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -39,16 +40,278 @@
 	<div class="post">
 		<div class="post-info">
     <span>Written by</span>
-        
+        Joel W. Fish
         <br>
         <span>on&nbsp;</span><time datetime="2019-03-11 16:03:40 -0400 EDT">March 11, 2019</time>
 </div>
-		<h1 class="post-title">Installation Notes (Hugo &#43; GitHub-Pages)</h1>
+		<h1 class="post-title">Installation Notes</h1>
 <div class="post-line"></div>
 
 		
 
-		<p>I&rsquo;ll put my notes here on how I created this webpage/blog.</p>
+		
+
+<p>As a first post, I thought I&rsquo;d document how I put this blog together,
+specifically using Hugo + GitHub-Pages. Honestly, this is probably more
+for my reference that anyone else&rsquo;s, but whatever.  It was good practice
+in a number of directions, mostly since I don&rsquo;t know what I&rsquo;m doing.</p>
+
+<p>Anyway, let&rsquo;s get started.  Everything found below was cobbled together
+from the following websites.</p>
+
+<p><a href="https://gohugo.io/getting-started/quick-start/">https://gohugo.io/getting-started/quick-start/</a><br>
+<a href="https://themes.gohugo.io/tale-hugo/">https://themes.gohugo.io/tale-hugo/</a><br>
+<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">https://gohugo.io/hosting-and-deployment/hosting-on-github/</a><br></p>
+
+<p>Preliminaries:
+I&rsquo;m working on a Mac, and I use homebrew from the command line to install
+stuff.  If you don&rsquo;t use homebrew (or a Mac), you&rsquo;ll need to install Hugo
+differently. Also, I should make clear the fact that I really have no idea
+what I&rsquo;m doing, so the following is all &ldquo;use at your own risk&rdquo; and my
+terminology may be way off.  You&rsquo;ve been warned. :)</p>
+
+<h3 id="step-1">Step 1.</h3>
+
+<p>I already had a Git Hub account, so I logged in to the web version.</p>
+
+<h3 id="step-2">Step 2.</h3>
+
+<p>I created two new repositories; the first one private which can be left empty:</p>
+
+<pre><code>FishOutOfWater
+</code></pre>
+
+<p>and the second one public which should initialized with a readme file (I
+seemed to have problems later with adding the appropriate submodule if I
+left the repo empty):</p>
+
+<pre><code>joelwatsonfish.github.io
+</code></pre>
+
+<p>Note:
+<code>FishOutOfWater</code> will be our repository which holds a bunch of the content
+Hugo creates for us.  But then Hugo will &ldquo;compile&rdquo; a static website for us
+and put it locally in a directory named <code>public</code>.  This folder will
+then be linked with the repository <code>joelwatsonfish.github.io</code> as a submodule
+in a local directory.  It also occurs to me, that I pay for GitHub, so
+anyone else might not have private repositories.  I suspect this doesn&rsquo;t
+matter much, other than the fact that maybe people can view things that
+you are writing in progress. Maybe. Oh, and lastly, one can change
+<code>FishOutOfWater</code> to anything else, but any other account should change
+<code>joelwatonfish.github.io</code> to <code>&lt;USERNAME&gt;.github.io</code> in order for everything
+else to run properly. This makes use of GitHub&rsquo;s &ldquo;Pages&rdquo; for hosting
+websites.</p>
+
+<h3 id="step-3">Step 3.</h3>
+
+<p>From a previous attempt, I had installed Hugo. This was done with the
+following command.</p>
+
+<pre><code>brew install hugo
+</code></pre>
+
+<h3 id="step-4">Step 4.</h3>
+
+<p>Decide where the website files are all going to go. These are all files
+associated to building the site, not just the web pages themselves.  I
+decided on <code>~/docs/FishOutOfWater</code>, but I didn&rsquo;t create the directory yet;
+we let Hugo do that for us in the next step.</p>
+
+<h3 id="step-5">Step 5.</h3>
+
+<p>Let Hugo create some shit for us, and then move into that directory.</p>
+
+<pre><code>cd ~/docs/
+hugo new site FishOutOfWater
+cd FishOutOfWater
+</code></pre>
+
+<h3 id="step-6">Step 6.</h3>
+
+<p>Initialize the FishOutOfWater directory a repository, and link it with the
+FishOutOfWater repository on GitHub.</p>
+
+<pre><code>git init
+git add .
+git commit -m &quot;First commit.&quot;
+git remote add origin https://github.com/joelwatsonfish/FishOutOfWater
+git push -u origin master
+</code></pre>
+
+<h3 id="step-7">Step 7.</h3>
+
+<p>Download the desired theme and create a submodule for it. Apparently the
+benefit of these submodules is that they can be updated via github
+independently from the parent project. I chose to work with the &ldquo;tale&rdquo;
+theme, so you can change this to something else if you prefer.</p>
+
+<pre><code>git submodule add https://github.com/EmielH/tale-hugo.git themes/tale
+</code></pre>
+
+<h3 id="step-8">Step 8.</h3>
+
+<p>Configure the Hugo data for the website. I edited the file
+<code>~/docs/FishOutOfWater/config.toml</code> so that it contained the line</p>
+
+<pre><code>theme = &quot;tale&quot;
+</code></pre>
+
+<p>I also edited two lines so they now read:</p>
+
+<pre><code>baseURL = &quot;https://joelwatsonfish.github.io&quot;
+title = &quot;Fish Out Of Water&quot;
+</code></pre>
+
+<h3 id="step-9">Step 9.</h3>
+
+<p>Create some new content.</p>
+
+<pre><code>hugo new posts/hello-world.md
+cd content/posts
+</code></pre>
+
+<h3 id="step-10">Step 10.</h3>
+
+<p>Edit the file &ldquo;hello-world.md&rdquo; to say something.  Also make sure to change
+the line &ldquo;draft: true&rdquo; to &ldquo;draft: false&rdquo;</p>
+
+<pre><code>vim hello-world.md
+</code></pre>
+
+<h3 id="step-11">Step 11.</h3>
+
+<p>Check to make sure Hugo can compile everything into a local website.</p>
+
+<pre><code>cd ~/docs/FishOutOfWater
+hugo server -D
+</code></pre>
+
+<p>open a web browser, and put the following in the address bar to navigate here:</p>
+
+<pre><code>http://localhost:1313/
+</code></pre>
+
+<p>Hopefully you see the site looking and functioning the way it&rsquo;s supposed
+to.  This is only locally on the computer, so we need to publish this to
+GitHub (and compile it, I think).</p>
+
+<h3 id="step-12">Step 12.</h3>
+
+<p>Re-open the terminal in which the last command was run, and hit Ctrl+C to
+stop the local server.</p>
+
+<h3 id="step-13">Step 13.</h3>
+
+<p>Check to see if the directory ~/docs/FishOutOfWater/public exists.  If it
+does, then execute the following.</p>
+
+<pre><code>cd ~/docs/FishOutOfWater
+rm -rf public
+</code></pre>
+
+<h3 id="step-14">Step 14.</h3>
+
+<p>Create a submodule for the directory (public) which will contain the website output from Hugo.</p>
+
+<pre><code>git submodule add -b master https://github.com/joelwatsonfish/joelwatsonfish.github.io.git public
+</code></pre>
+
+<h3 id="step-15">Step 15.</h3>
+
+<p>Delete the public directory just created, then run hugo (to compile the
+site), add, commit, and push all the new content to GitHub</p>
+
+<pre><code>rm -rf public
+hugo
+cd public
+git add .
+git commit -m &quot;First commit. Golden Run.&quot;
+git push origin master
+cd ..
+</code></pre>
+
+<h3 id="step-16">Step 16.</h3>
+
+<p>Open up a web browser, direct it to the following address.</p>
+
+<pre><code>https://joelwatsonfish.github.io
+</code></pre>
+
+<h3 id="step-17">Step 17.</h3>
+
+<p>Making changes to the website follows the following procedure, which will
+be automated with a script (posted below).</p>
+
+<h3 id="step-17a">Step 17a.</h3>
+
+<p>Edit files locally. Ideally Hugo is used to create new content, which is
+then modified appropriately.</p>
+
+<h3 id="step-17b">Step 17b.</h3>
+
+<p>Delete the local copy of the website.</p>
+
+<pre><code>cd ~/docs/FishOutOfWater
+rm -rf public
+</code></pre>
+
+<h3 id="step-17c">Step 17c.</h3>
+
+<p>Use Hugo to build the website based off newly edited files; then add, commit, and push to GitHub</p>
+
+<pre><code>hugo
+cd public
+git add .
+git commit -m &quot;Always commit with a message.&quot;
+git push origin master
+cd ..
+</code></pre>
+
+<h3 id="step-18">Step 18.</h3>
+
+<p>Automate the update process with the following shell script.  Create a
+file called ~/docs/FishOutOfWater/deploy.sh detailed below, change
+permisions so it can be executed, and execute it with the command
+<code>./deploy.sh</code></p>
+
+<pre><code class="language-Bash">#!/bin/bash
+
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+# Build the project.
+hugo # if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`
+
+# Go To Public folder
+cd public
+# Add changes to git.
+git add .
+
+# Commit changes.
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos.
+git push origin master
+
+# Come Back up to the Project Root
+cd ..
+</code></pre>
+
+<h3 id="step-19">Step 19.</h3>
+
+<p>Make some changes to the site.  I added another post with the command
+hugo new posts/installation-notes.md and then ran my newly written shell
+script to update the website.</p>
+
+<pre><code>./deploy.sh
+</code></pre>
+
+<h3 id="step-19-1">Step 19.</h3>
+
+<p>Take over the world.</p>
 
 
 		
@@ -56,6 +319,7 @@
 
 	<div class="pagination">
 		<a href="/posts/hello-world/" class="left arrow">&#8592;</a>
+		<a href="/about/" class="right arrow">&#8594;</a>
 
 		<a href="#" class="top">Top</a>
 	</div>
@@ -64,7 +328,7 @@
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-03-12 07:32:39.55354 -0400 EDT m=&#43;0.178167160">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2019-03-29 23:59:55.549024 -0400 EDT m=&#43;0.090915689">2019</time> Joel W. Fish. Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

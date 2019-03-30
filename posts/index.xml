@@ -12,12 +12,17 @@
     
     
     <item>
-      <title>Installation Notes (Hugo &#43; GitHub-Pages)</title>
+      <title>Installation Notes</title>
       <link>https://joelwatsonfish.github.io/posts/installation-notes/</link>
       <pubDate>Mon, 11 Mar 2019 16:03:40 -0400</pubDate>
       
       <guid>https://joelwatsonfish.github.io/posts/installation-notes/</guid>
-      <description>I&amp;rsquo;ll put my notes here on how I created this webpage/blog.</description>
+      <description>As a first post, I thought I&amp;rsquo;d document how I put this blog together, specifically using Hugo + GitHub-Pages. Honestly, this is probably more for my reference that anyone else&amp;rsquo;s, but whatever. It was good practice in a number of directions, mostly since I don&amp;rsquo;t know what I&amp;rsquo;m doing.
+Anyway, let&amp;rsquo;s get started. Everything found below was cobbled together from the following websites.
+https://gohugo.io/getting-started/quick-start/
+https://themes.gohugo.io/tale-hugo/
+https://gohugo.io/hosting-and-deployment/hosting-on-github/
+Preliminaries: I&amp;rsquo;m working on a Mac, and I use homebrew from the command line to install stuff.</description>
     </item>
     
     <item>

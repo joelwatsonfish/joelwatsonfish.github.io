@@ -6,18 +6,36 @@
     <description>Recent content on Fish Out Of Water</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Mar 2019 16:03:40 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 29 Mar 2019 22:33:36 -0400</lastBuildDate>
     
 	<atom:link href="https://joelwatsonfish.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Installation Notes (Hugo &#43; GitHub-Pages)</title>
+      <title>About This Blog</title>
+      <link>https://joelwatsonfish.github.io/about/</link>
+      <pubDate>Fri, 29 Mar 2019 22:33:36 -0400</pubDate>
+      
+      <guid>https://joelwatsonfish.github.io/about/</guid>
+      <description>The main purpose of this blog is to be a place for me to fail. Publicly. Perhaps spectacularly. So it goes &amp;ndash; that&amp;rsquo;s just how I learn.
+
+Let me elaborate.
+
+There are some subjects I know fairly well, but I don&amp;rsquo;t really want to discuss them here. On the other hand, there are a lot of other things that I don&amp;rsquo;t know well, but that I&amp;rsquo;d like to understand much better.</description>
+    </item>
+    
+    <item>
+      <title>Installation Notes</title>
       <link>https://joelwatsonfish.github.io/posts/installation-notes/</link>
       <pubDate>Mon, 11 Mar 2019 16:03:40 -0400</pubDate>
       
       <guid>https://joelwatsonfish.github.io/posts/installation-notes/</guid>
-      <description>I&amp;rsquo;ll put my notes here on how I created this webpage/blog.</description>
+      <description>As a first post, I thought I&amp;rsquo;d document how I put this blog together, specifically using Hugo + GitHub-Pages. Honestly, this is probably more for my reference that anyone else&amp;rsquo;s, but whatever. It was good practice in a number of directions, mostly since I don&amp;rsquo;t know what I&amp;rsquo;m doing.
+Anyway, let&amp;rsquo;s get started. Everything found below was cobbled together from the following websites.
+https://gohugo.io/getting-started/quick-start/
+https://themes.gohugo.io/tale-hugo/
+https://gohugo.io/hosting-and-deployment/hosting-on-github/
+Preliminaries: I&amp;rsquo;m working on a Mac, and I use homebrew from the command line to install stuff.</description>
     </item>
     
     <item>
