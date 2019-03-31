@@ -1,0 +1,477 @@
+---
+title: "In Defense of Genetic Determinism"
+output: 
+  html_document:
+    css: style.css
+---
+
+#### Trigger warnings: 
+*[linear algebra], [differential equations], [wrongthink]*
+
+### Prelude
+
+I thought about writing a bit of prologue to this, providing some
+reflection on my emotional response to discovering behavioral genetics
+(there was a small existential crisis involved), but then I realized,
+*Dude; this is Twitter. No one gives a fuck.*  And so I decided to jump
+right into the discussion.  It starts with an ill-posed question:
+
+<br>
+
+> *How much of my personality (that is, that which makes me **ME**) is just
+> due to what's encoded in my DNA?*
+
+<br>
+
+To be clear, we can't possibly know. Behavioral genetics is geared toward
+estimating the percentage of trait variance due to genes in a *population*
+-- not in an *individual*. More frustrating, the (say, narrow-sense)
+heritability $h^2$, that many such papers estimate is subject to change
+simply because social conditions and/or influences become more varied or
+less varied. That is, these estimates are not immutable across time.  I
+think it's important to go a step further though, and point out that the
+above question is actually ill-posed, and it seems that most reasonable
+and informed persons discussing these topics tend to agree that indeed the
+question is rather ill-posed. More to the point, they tend to agree that
+this general question of "nature vs nurture" is so over-simplified that it
+shouldn't even be asked because doing so inevitably *increases*
+misunderstanding rather than *decreasing* it.  To people new to these
+ideas, it is rather confusing and frustrating that such questions are "not
+even wrong,"  so I'd like to propose an analogous question which
+highlights the problem.
+
+<br>
+
+> *Consider a rectangle, with a length of 3 inches, and a width of 2 inches.
+> What percentage of the area of this rectanble is due to length, and what
+> percentage of the area is due to width?*
+
+<br>
+
+I claim this question is nonsense.  The area is the *product* of length
+and width rather than the *sum*, so it is meaningless to ask about
+percentage of area that's due to length or width.  I'd argue the question
+itself involves a category error (products versus sums), and I believe the
+general "nature vs nurture" question is similar. Indeed, genes and
+environment interact in massively complicated ways, so asking how much of a
+person's personality is due to one or the other -- or even which
+contributed *more* -- is just a nonsense question.  And I believe this
+holds more generally in regards to genes vs social conditioning.  Our
+personality and behavioral traits are a complicated mix of our genes and
+our social environment, and we can't say which is playing a bigger part.
+
+### But really it's all just genes.
+Okay, so this the main thesis of this post, so I need to clarify my
+meaning so I don't sound like I'm completely contradicting myself.
+Still, I think there is something interesting here, so let me try to
+explain with a simple model. Let's consider a very simple society
+consisting of just two people which we'll label $x$ and $y$.  Suppose each has
+some level of a specific trait $T$, and we'll denote the respective trait
+levels $T_x$ and $T_y$ respectively. Let's also suppose that 
+the trait in one person is influenced by two things: that same person's
+genetic contribution, and the other person's trait level. For the sake of
+simplicity, suppose that the trait value $T_x$ for person $x$ is just the
+average of genetic contribution of $x$, namely $G_x$, and the trait value
+of person $y$, namely $T_y$.  Writing out the equation, we have:
+
+$$T_x = {\textstyle\frac{1}{2}}G_x + {\textstyle \frac{1}{2}} T_y.$$
+
+Similarly for $y$:
+
+$$T_y = {\textstyle \frac{1}{2}}G_y + {\textstyle \frac{1}{2}}T_x.$$
+
+
+The idea here is simply to allow that a person's trait level is influenced
+by a combination of their own genetic predispositions, together with the
+traits of others.  Yes, of course it can be more complicated, but for now
+let's focus on this simple case.  In particular, let's use a bit of linear
+algebra to combine the two equations into one:
+
+$$
+\left(
+\begin{matrix}
+T_x \\
+T_y 
+\end{matrix}
+\right)
+=
+\frac{1}{2}
+\left(
+\begin{matrix}
+G_x \\
+G_y 
+\end{matrix}
+\right)
++
+\left(
+\begin{matrix}
+0 & {\textstyle \frac{1}{2}} \\
+{\textstyle \frac{1}{2}} & 0 
+\end{matrix}
+\right)
+\left(
+\begin{matrix}
+T_x \\
+T_y 
+\end{matrix}
+\right).
+$$
+
+Ah, but of course we can collect the $T$ terms on one side, so let's do that.
+$$
+\left(
+\begin{matrix}
+1 & {\textstyle -\frac{1}{2}} \\
+{\textstyle -\frac{1}{2}} & 1 
+\end{matrix}
+\right)
+\left(
+\begin{matrix}
+T_x \\
+T_y 
+\end{matrix}
+\right)
+=
+\frac{1}{2}
+\left(
+\begin{matrix}
+G_x \\
+G_y 
+\end{matrix}
+\right).
+$$
+
+Oh, but the matrix on the left hand side is non-singular, so we can compute its inverse as follows:
+
+
+$$
+\left(
+\begin{matrix}
+1 & {\textstyle -\frac{1}{2}} \\
+{\textstyle -\frac{1}{2}} & 1 
+\end{matrix}
+\right)^{-1}
+=
+\frac{4}{3}
+\left(
+\begin{matrix}
+1 & {\textstyle \frac{1}{2}} \\
+{\textstyle \frac{1}{2}} & 1 
+\end{matrix}
+\right).
+$$
+
+
+
+So we can multiply both sides of our previous equation by that inverse to obtain
+
+$$
+\left(
+\begin{matrix}
+T_x \\
+T_y 
+\end{matrix}
+\right)
+=
+\frac{2}{3}
+\left(
+\begin{matrix}
+1 & {\textstyle \frac{1}{2}} \\
+{\textstyle \frac{1}{2}} & 1 
+\end{matrix}
+\right)
+\left(
+\begin{matrix}
+G_x \\
+G_y 
+\end{matrix}
+\right)
+$$
+
+Or breaking it into two equations, we have
+
+$$T_x = {\textstyle \frac{2}{3}}G_x + {\textstyle \frac{1}{3}}G_y\qquad \text{and} \qquad T_y = {\textstyle \frac{1}{3}}G_x + {\textstyle \frac{2}{3}}G_y. $$
+
+Uhhh... Uh oh. This is clearly "problematic."  I mean, we started with
+this model in which a person's trait level was just an average of 1) their
+own genetic influence with 2) the trait level of everyone else (just one
+other person in this case), and all we did was formulate this into an
+equation, and then it turned out we could solve it, so we did.  And, as we
+can see, the trait value of person $x$ and of person $y$ is given
+explicitly as a function only of genetic influences.  Put differently, the
+trait value of any given person is determined completely by the genetic
+contributions to that trait from everyone else in the population.  That
+is: trait values of the population are determined completely by the
+genetic contributions in the population. In particular, the role of
+society (as some sort of explicitly influencing entity) doesn't appear at
+all.
+
+<br>
+
+Okay, okay, this seems like the toy version of a toy model, and there are
+million and one ways to critique it, so let's try to make it more robust.
+First, a two person society seems... well, let's just say uninteresting,
+so suppose it's $n$ people instead, so we have people $x_1, \ldots, x_n$
+rather than just $x$ and $y$.  For trait $T$ the trait levels in the
+population will be given by $T_1, \ldots, T_n$, and genetic contributions
+given by $G_1, \ldots, G_n$.  Also, suppose that each $T_i$ equals a
+weighted average of the form $p G_i + (1-p) \bar{T}_i$ where $0 < p < 1$
+and $\bar{T}_i$ denotes the average trait level of everyone other than
+$x_i$. In this case, the linear equation looks like the following:
+
+
+$$
+\left(
+\begin{matrix}
+T_1 \\
+T_2 \\
+\vdots\\
+T_{n-1} \\
+T_n 
+\end{matrix}
+\right)
+=
+p
+\left(
+\begin{matrix}
+G_1 \\
+G_2 \\
+\cdots \\
+G_{n-1} \\
+G_n 
+\end{matrix}
+\right)
++
+\frac{1-p}{n-1}
+\left(
+\begin{matrix}
+0 & 1  &  \cdots &  & 1 \\
+1 & 0  & 1  & &  \\
+\vdots & 1 &\ddots &\ddots & \vdots\\
+ &  & \ddots& 0 & 1 \\
+1 & & \cdots  & 1 & 0
+\end{matrix}
+\right)
+\left(
+\begin{matrix}
+T_1 \\
+T_2 \\
+\vdots\\
+T_{n-1} \\
+T_n 
+\end{matrix}
+\right).
+$$
+
+It might not be clear from the equation, but the $n\times n$ matrix above
+is the matrix which has a $1$ in every entry except along the diagonal
+where the value is $0$.  This equation is still ugly to look at, so let's
+rewrite it (with obvious substitutions) as the following:
+
+$$
+\vec{T} = p \vec{G} + (1-p) N \vec{T}.
+$$
+
+Here I'm thinking of $N$ has my social network of influence ($N$ for
+network), which tells me how people influence other people. Anyway, if you
+are playing along at home, then you know the next step is to rewrite this
+as
+
+$$
+\big(Id - (1-p) N\big)\vec{T} = p \vec{G} 
+$$
+
+where $Id$ is the identity matrix, and then hope that $Id- (1-p)N$ is
+invertible. Fortunately the math gods are smiling today because as long as
+$0 < p < 1$, this matrix is invertible.  To prove this, first observe that
+this matrix has the form $Id-A$ (with $A= (1-p)N$) and hence has inverse
+given by
+
+$$
+(Id-A)^{-1} = \sum_{k=0}^\infty A^k
+$$
+
+which is defined whenever it converges, and it converges whenever $\|A\|
+<1$; in our case we have $A=(1-p)N$, so indeed $\|A\|<1$  because  $0<p<1$
+and because it can be shown (without too much difficulty) that $\|N\| \leq
+1$.  But then once our inverse exists, we again have a formula the trait
+values in terms of the genetic contributions in the population. Indeed,
+it's given by the following:
+
+$$
+\vec{T} = p \big(\sum_{k=0}^\infty (1-p)^k N^k \big) \vec{G}.
+$$
+
+Again, the same idea resurfaces: the trait value of any one given person
+is completely determined by an aggregate of genetic influences of
+individual persons.  There is no influence from "society" other than the
+structure of the social network that determines how the genetic aggregate
+is computed. And that's what I mean when I say "But really it's all just
+genes." Naively formulated, it looks like "genes" and "society" both play
+important roles, but it seems that the influence of "society" is just some
+aggregate influence of "genes."
+
+<br>
+
+Before declaring some sort of victory, let's generalize a bit more.  I
+think the next thing to modify is the matrix $N$ which measures the
+network of social connections.  I won't be completely certain until I
+write a proof, but I'm pretty sure you can replace the given $N$ with any
+matrix with the properties that 
+
+1) each of its entries are the interval $[0,1]$, 
+2) all entries along the diagonal are zero,
+3) each row sums to $1$.  
+
+This would account for any weighted average of influence from
+other people.  I may try to prove this, but at the moment I can't seem to
+get the "lemma" environment to work properly in RMarkdown. Perhaps later.
+
+<br>
+
+Okay, the next biggest critique might well be that people's traits change
+over time based on the influence of others. This is of course reasonable,
+but the fix is write down the differential equations which governs that
+change. My first attempt to model that would be to write the vector of
+trait values as a function of time: $\vec{T}(t)$, so the change in trait
+values as a function of time is given by the derivative $\vec{T}'(t)$.
+Then there should be a tendency for $\vec{T}(t)$ to move toward our
+genetic predisposition, $\vec{A}(t) = \vec{G} - \vec{T}(t)$, and a
+tendency to move toward the trait mean of the remaining population
+$\vec{B}(t)=N\vec{T}(t)-\vec{T}(t)$.  Suppose then that $\vec{T}'(t)$ is
+the weighted sum of $\vec{A}(t)$ and $\vec{B}(t)$.  Our differential
+equation then becomes:
+
+$$\vec{T}'(t)=a\vec{A}(t) + b\vec{B}(t) = a\vec{G} +b N\vec{T}(t) - (a+b)\vec{T}(t).$$
+
+Letting $p=\frac{a}{a+b}$ and $h=a+b$, we can rewrite this as
+
+$$\vec{T}'(t)= ph \vec{G} +(1-p)h N\vec{T}(t) - h\vec{T}(t).$$
+
+I'm fairly confident you don't want to see me work this out, but this
+differential equation can be solved explicitly, and the rest points (where
+the trait values $\vec{T}(t)$ end eventually end up at) are the exact same
+points found above, namely
+
+$$
+\vec{T} = p \big(\sum_{k=0}^\infty (1-p)^k N^k \big) \vec{G}.
+$$
+
+Also of interest is that the solutions of this differential equation
+depend only on intial trait values and genetic contributions.  And again
+this comports with the principle idea here: in some sense, it all just
+boils down to the population distribution of genetic influences, and
+everything else is determined from that.  This is at least true of the
+steady state (i.e. rest point the dynamical system), but to another extent
+it's also true of the trajectory the trait values take, although such
+trajectories depend on initial conditions as well.
+
+### Reminder: The real world is much more complicated
+
+Okay, there is a good chance I've nearly lost you, so if further
+discusions of model limitations and/or model generalizations sounds
+completely boring, then just skip down to the next section where I try to
+summarize my main points.  I promise, I won't think less of you.
+Actually, I already think more of you simply for making it this far.
+
+<br>
+
+Right, so the real world is way more complicated than the above model
+suggests; it's imperative to make that clear.  There are lots of
+interesting changes to the model to consider to make it more accurate.
+First and foremost I think is determining whether the system is first order or
+second order.  I mean, it could totally be plausible that traits are
+governed by a differtential equation like some over-damped mass-spring
+system.  I mean, why not? Or maybe the system is fully non-linear.  For
+example, I could imagine if two people have traits which are very far
+apart, then maybe neither ends up changing because the other is simply too
+different.  And two people who are different but closer together might
+move to balance much faster. It could be.
+
+<br>
+
+Another really interesting possibility would be to consider how that
+social network of influence $N$ might change over time.  Recall, this
+matrix records how much influence individuals have over which other
+individuals.  Suppose that the further one's trait is from their genetic
+predisposition, the more distress they feel as they are someone torn
+between their own desires and that of the rest of the people who influence
+them.  This distress could be alleviated by changing the composition of
+people who have influence over said individual.  There could be a
+tendencey to make more friends with people who are closer to one's genetic
+predispositions, which would result in a changing $N$.  At first glance,
+this looks like a cool way to model the general polarization phenomena we
+see playing out in society.  Could be rather intersting.
+
+<br>
+
+Hm. I should address my perhaps problematic use of the word "genes"
+throughout this post.  Of course, what I should really say is that
+$\vec{G}$ is supposed to represent immutable contributions to one's trait
+values. Sure, this could be genetic influence, but it could also be random
+noise from the contstruction process of being built (or "growing up" as a
+normal person might say). Or it could be other environmental consequences
+that can't be changed.  This also would include technology changes which
+influence trait expression (for example, the effect of birth control on
+sexual freedom), which would change over time, but not due to social
+conditioning.
+
+<br>
+
+Oh, and another important point: Noise.  Although I've clearly suggested
+that trait values are fundamentally deterministic, this completely ignores
+the role of chance events which can shape the trajectory, which almost
+certainly play an important role. Indeed, a more accurate title for the
+previous section would be "But really it's all just genes and noise."
+Unfortunately, I can't discuss this improvement in any satisfactory way
+because my knowledge of stochastic differential equations is non-existent.
+To be revisited.
+
+
+### Conclusion and takeaway
+
+This ended up being far longer than I intended, and the point that was
+fairly clear in my head may have become completely lost in the math and
+text, so let me try to shore things up.  We're all familiar with the
+pseudo-strawman of the blank slate hypothesis, in which one believes that
+people's traits are completely determined by social conditioning, with no
+immutable individuating contributions (like genetic influences).  So with
+some hard work, and and open mind, one can take the eventual step towards
+what sounds like a much more reasonble position: People's pyschological
+and behavioral traits are the result of some mix of both genetic/immutable
+influences and social conditioning influences.  This of course seems to be
+Steven Pinker's conclusion, as well as that of most behavioral geneticists
+and evolutionary pyschologists.  And all these folks are completely
+correct in rejecting the extreme biological determinist position, which
+posits that individuals are shaped by their own genes alone.
+
+<br>
+
+However, the purpose of this post is to pick up where Pinker and others
+have left off, and suggest that personalities are shaped not by a mix of
+one's genes and social conditioning, but rather just one's genes and a
+mixture of everyone else's genetic predispositions.  That is, the role
+that society plays is more of an illusion than an actual conditioning
+force.  More specifically, when we work at population level, and we
+formulate the relationship between traits and immutable and transmutable
+influences, a bit of compuation frequently seems to make the social forces
+disappear.  Maybe I can narrow this further: I see no evidence that the
+steady-sate of a trait distribution is shaped by anything other than
+genetic influences at population level.  In particular then, society
+itself does not shape anything, but rather society is that whih is shaped
+by genes.
+
+
+<br>
+
+Such a notion may well be heretical, but I'd like to see a plausible model
+which suggests otherwise. If such a model exists, we should be able to
+implement it for very small populations (say 2 - 12), and I'd like to get
+a better understanding.  Until then though, it looks to me that at
+populations level, most traits should be expected to be completely
+governed by genes and noise.
+
+<br>
+
+*-jwf*
+

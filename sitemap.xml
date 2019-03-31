@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://joelwatsonfish.github.io/posts/genetic_determinism/</loc>
+    <lastmod>2019-03-31T12:26:19-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://joelwatsonfish.github.io/about/</loc>
     <lastmod>2019-03-29T22:33:36-04:00</lastmod>
   </url>
@@ -18,19 +23,23 @@
   </url>
   
   <url>
+    <loc>https://joelwatsonfish.github.io/posts/genetic_determinism/</loc>
+  </url>
+  
+  <url>
     <loc>https://joelwatsonfish.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://joelwatsonfish.github.io/</loc>
-    <lastmod>2019-03-29T22:33:36-04:00</lastmod>
+    <lastmod>2019-03-31T12:26:19-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://joelwatsonfish.github.io/posts/</loc>
-    <lastmod>2019-03-11T16:03:40-04:00</lastmod>
+    <lastmod>2019-03-31T12:26:19-04:00</lastmod>
     <priority>0</priority>
   </url>
   
